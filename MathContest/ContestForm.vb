@@ -160,7 +160,7 @@ Public Class ContestForm
         correctAnswer = CreateMathAnswer(True)
         If CDec(StudentAnswerTextBox.Text) = correctAnswer Then
             InfoChecker()
-            MessageBox.Show("Congradulation's, you got the right Answer")
+            MessageBox.Show("Congratulation's, you got the right Answer")
             KeepRightCount(1)
         Else
             InfoChecker()
