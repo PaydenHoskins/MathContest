@@ -62,12 +62,6 @@ Public Class ContestForm
         Dim message As String
 
         Select Case AgeTextBox.Text
-            Case "4"
-                ageValid = True
-            Case "5"
-                ageValid = True
-            Case "6"
-                ageValid = True
             Case "7"
                 ageValid = True
             Case "8"
