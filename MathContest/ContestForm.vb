@@ -129,7 +129,6 @@ Public Class ContestForm
                 answer = firstNumber / SecondNumber
             End If
         End If
-        Me.Text = CStr(answer)
         Return answer
     End Function
     Function RandomNumber(Min As Integer, Max As Integer) As Integer
