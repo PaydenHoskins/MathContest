@@ -27,6 +27,8 @@ Partial Class ContestForm
         Me.AgeTextBox = New System.Windows.Forms.TextBox()
         Me.GradeTextBox = New System.Windows.Forms.TextBox()
         Me.MathProblemGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Number2Label = New System.Windows.Forms.Label()
+        Me.Number1Label = New System.Windows.Forms.Label()
         Me.StudentAnswerLabel = New System.Windows.Forms.Label()
         Me.SecondNumberLabel = New System.Windows.Forms.Label()
         Me.FisrtNumberLabel = New System.Windows.Forms.Label()
@@ -44,8 +46,7 @@ Partial Class ContestForm
         Me.SummeryButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
         Me.SubmitButton = New System.Windows.Forms.Button()
-        Me.Number1Label = New System.Windows.Forms.Label()
-        Me.Number2Label = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.MathProblemGroupBox.SuspendLayout()
         Me.StudentInfoGroupBox.SuspendLayout()
         Me.MathProblemTypeGroupBox.SuspendLayout()
@@ -97,6 +98,22 @@ Partial Class ContestForm
         Me.MathProblemGroupBox.TabStop = False
         Me.MathProblemGroupBox.Text = "Current Math Problem"
         '
+        'Number2Label
+        '
+        Me.Number2Label.AutoSize = True
+        Me.Number2Label.Location = New System.Drawing.Point(6, 84)
+        Me.Number2Label.Name = "Number2Label"
+        Me.Number2Label.Size = New System.Drawing.Size(0, 13)
+        Me.Number2Label.TabIndex = 14
+        '
+        'Number1Label
+        '
+        Me.Number1Label.AutoSize = True
+        Me.Number1Label.Location = New System.Drawing.Point(6, 38)
+        Me.Number1Label.Name = "Number1Label"
+        Me.Number1Label.Size = New System.Drawing.Size(0, 13)
+        Me.Number1Label.TabIndex = 10
+        '
         'StudentAnswerLabel
         '
         Me.StudentAnswerLabel.AutoSize = True
@@ -134,7 +151,7 @@ Partial Class ContestForm
         Me.StudentInfoGroupBox.Controls.Add(Me.NameTextBox)
         Me.StudentInfoGroupBox.Location = New System.Drawing.Point(54, 36)
         Me.StudentInfoGroupBox.Name = "StudentInfoGroupBox"
-        Me.StudentInfoGroupBox.Size = New System.Drawing.Size(391, 77)
+        Me.StudentInfoGroupBox.Size = New System.Drawing.Size(391, 111)
         Me.StudentInfoGroupBox.TabIndex = 7
         Me.StudentInfoGroupBox.TabStop = False
         Me.StudentInfoGroupBox.Text = "Student Info"
@@ -225,6 +242,7 @@ Partial Class ContestForm
         '
         'ControlsGroupBox
         '
+        Me.ControlsGroupBox.Controls.Add(Me.Label1)
         Me.ControlsGroupBox.Controls.Add(Me.ExitButton)
         Me.ControlsGroupBox.Controls.Add(Me.SummeryButton)
         Me.ControlsGroupBox.Controls.Add(Me.ClearButton)
@@ -265,28 +283,21 @@ Partial Class ContestForm
         '
         'SubmitButton
         '
-        Me.SubmitButton.Location = New System.Drawing.Point(29, 30)
+        Me.SubmitButton.Location = New System.Drawing.Point(28, 18)
         Me.SubmitButton.Name = "SubmitButton"
         Me.SubmitButton.Size = New System.Drawing.Size(209, 45)
         Me.SubmitButton.TabIndex = 0
         Me.SubmitButton.Text = "Submit "
         Me.SubmitButton.UseVisualStyleBackColor = True
         '
-        'Number1Label
+        'Label1
         '
-        Me.Number1Label.AutoSize = True
-        Me.Number1Label.Location = New System.Drawing.Point(6, 38)
-        Me.Number1Label.Name = "Number1Label"
-        Me.Number1Label.Size = New System.Drawing.Size(0, 13)
-        Me.Number1Label.TabIndex = 10
-        '
-        'Number2Label
-        '
-        Me.Number2Label.AutoSize = True
-        Me.Number2Label.Location = New System.Drawing.Point(6, 84)
-        Me.Number2Label.Name = "Number2Label"
-        Me.Number2Label.Size = New System.Drawing.Size(0, 13)
-        Me.Number2Label.TabIndex = 14
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(10, 79)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(248, 13)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Must press Clear before entering next students info."
         '
         'ContestForm
         '
@@ -308,6 +319,7 @@ Partial Class ContestForm
         Me.MathProblemTypeGroupBox.ResumeLayout(False)
         Me.MathProblemTypeGroupBox.PerformLayout()
         Me.ControlsGroupBox.ResumeLayout(False)
+        Me.ControlsGroupBox.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -336,4 +348,5 @@ Partial Class ContestForm
     Friend WithEvents SubmitButton As Button
     Friend WithEvents Number2Label As Label
     Friend WithEvents Number1Label As Label
+    Friend WithEvents Label1 As Label
 End Class

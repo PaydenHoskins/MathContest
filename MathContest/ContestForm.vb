@@ -1,8 +1,14 @@
-﻿'Header
+﻿'Payden hoskins
+'RCET2265
+'Math Contest
+'Spring 2026
+'https://github.com/PaydenHoskins/MathContest.git
 
 Option Compare Text
 Option Explicit On
 Option Strict On
+
+Imports System.Windows.Forms.VisualStyles
 
 Public Class ContestForm
     Private Sub ContestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -99,20 +105,29 @@ Public Class ContestForm
             nameValid = True
         End If
         If ageValid = False Or gradeValid = False Or nameValid = False Then
-            MsgBox(message, MsgBoxStyle.Exclamation, "User Input Fail!!!!")
+            MsgBox(message, MsgBoxStyle.Exclamation, "Student not eligible to compete.")
         ElseIf ageValid = True And gradeValid = True And nameValid = True Then
             Number1Label.Text = CStr(RandomNumber(1, 10))
             Number2Label.Text = CStr(RandomNumber(1, 10))
         End If
     End Sub
-    Function CreateMathAnswer(Optional valid As Boolean = False) As Integer
-        Dim firstNumber As Integer
-        Dim SecondNumber As Integer
-        Dim answer As Integer
+    Function CreateMathAnswer(Optional valid As Boolean = False, Optional mathFunction As Integer = 0) As Double
+        Dim firstNumber As Decimal
+        Dim SecondNumber As Decimal
+        Static selectedCase As Integer = mathFunction
+        Dim answer As Decimal
         If valid = True Then
-            firstNumber = CInt(Number1Label.Text)
-            SecondNumber = CInt(Number2Label.Text)
-            answer = firstNumber * SecondNumber
+            firstNumber = CDec(Number1Label.Text)
+            SecondNumber = CDec(Number2Label.Text)
+            If AddRadioButton.Checked Then
+                answer = firstNumber + SecondNumber
+            ElseIf SubtractRadioButton.Checked Then
+                answer = firstNumber - SecondNumber
+            ElseIf MultiplyRadioButton.Checked Then
+                answer = firstNumber * SecondNumber
+            ElseIf DivideRadioButton.checked Then
+                answer = firstNumber / SecondNumber
+            End If
         End If
         Me.Text = CStr(answer)
         Return answer
@@ -126,20 +141,39 @@ Public Class ContestForm
         Dice += Min
         Return CInt(Math.Ceiling(Dice))
     End Function
-    Private Sub SubmitButton_Enter(sender As Object, e As EventArgs) Handles SubmitButton.Enter
-        Dim correctAnswer As Integer
+    Function KeepRightCount(Optional count As Integer = 0) As Integer
+        Static number As Integer = 0
+        If count = 1 Then
+            number += 1
+        ElseIf count = 2 Then
+            number = 0
+        ElseIf count = 0 Then
+        End If
+        Return number
+    End Function
+    Function KeepTotalCount(Optional count As Integer = 0) As Integer
+        Static number As Integer = 0
+        If count = 1 Then
+            number += 1
+        ElseIf count = 2 Then
+            number = 0
+        ElseIf count = 0 Then
+        End If
+        Return number
+    End Function
+    Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
+        Dim correctAnswer As Double
+        KeepTotalCount(1)
         correctAnswer = CreateMathAnswer(True)
-        If CInt(StudentAnswerTextBox.Text) = correctAnswer Then
+        If CDec(StudentAnswerTextBox.Text) = correctAnswer Then
             InfoChecker()
             MessageBox.Show("Congradulation's, you got the right Answer")
+            KeepRightCount(1)
         Else
             InfoChecker()
-            MessageBox.Show("incorrect answer")
+            MessageBox.Show($"incorrect answer, right answer was {correctAnswer}")
         End If
         CreateMathAnswer(True)
-    End Sub
-    Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
-        InfoChecker()
     End Sub
     Private Sub AgeTextBox_TextChanged(sender As Object, e As EventArgs) Handles AgeTextBox.TextChanged
         AllowSubmit()
@@ -155,16 +189,44 @@ Public Class ContestForm
         End
     End Sub
     Private Sub AddRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AddRadioButton.CheckedChanged
+        Dim selected As Integer = 1
         AllowSubmit()
+        CreateMathAnswer(, selected)
     End Sub
     Private Sub SubtractRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SubtractRadioButton.CheckedChanged
+        Dim selected As Integer = 2
         AllowSubmit()
+        CreateMathAnswer(, selected)
     End Sub
     Private Sub MultiplyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles MultiplyRadioButton.CheckedChanged
+        Dim selected As Integer = 3
         AllowSubmit()
+        CreateMathAnswer(, selected)
     End Sub
     Private Sub DivideRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles DivideRadioButton.CheckedChanged
+        Dim selected As Integer = 4
         AllowSubmit()
+        CreateMathAnswer(, selected)
     End Sub
-
+    Private Sub SummeryButton_Click(sender As Object, e As EventArgs) Handles SummeryButton.Click
+        Static rightAnswers As Integer
+        Static problems As Integer
+        rightAnswers = KeepRightCount(0)
+        problems = KeepTotalCount(0)
+        MessageBox.Show($"{NameTextBox.Text} has got {rightAnswers} right out of {problems}")
+    End Sub
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        NameTextBox.Text = ""
+        AgeTextBox.Text = ""
+        GradeTextBox.Text = ""
+        AddRadioButton.Checked = False
+        SubtractRadioButton.Checked = False
+        MultiplyRadioButton.Checked = False
+        DivideRadioButton.Checked = False
+        Number1Label.Text = ""
+        Number2Label.Text = ""
+        StudentAnswerTextBox.Text = ""
+        KeepRightCount(2)
+        KeepTotalCount(2)
+    End Sub
 End Class
