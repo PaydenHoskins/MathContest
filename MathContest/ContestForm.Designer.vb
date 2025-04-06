@@ -23,9 +23,7 @@ Partial Class ContestForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.NameTextBox = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.StudentAnswerTextBox = New System.Windows.Forms.TextBox()
         Me.AgeTextBox = New System.Windows.Forms.TextBox()
         Me.GradeTextBox = New System.Windows.Forms.TextBox()
         Me.MathProblemGroupBox = New System.Windows.Forms.GroupBox()
@@ -46,6 +44,8 @@ Partial Class ContestForm
         Me.SummeryButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
         Me.SubmitButton = New System.Windows.Forms.Button()
+        Me.Number1Label = New System.Windows.Forms.Label()
+        Me.Number2Label = New System.Windows.Forms.Label()
         Me.MathProblemGroupBox.SuspendLayout()
         Me.StudentInfoGroupBox.SuspendLayout()
         Me.MathProblemTypeGroupBox.SuspendLayout()
@@ -59,26 +59,12 @@ Partial Class ContestForm
         Me.NameTextBox.Size = New System.Drawing.Size(165, 20)
         Me.NameTextBox.TabIndex = 0
         '
-        'TextBox2
+        'StudentAnswerTextBox
         '
-        Me.TextBox2.Location = New System.Drawing.Point(6, 34)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(150, 20)
-        Me.TextBox2.TabIndex = 1
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(6, 78)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(150, 20)
-        Me.TextBox3.TabIndex = 2
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(6, 128)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(150, 20)
-        Me.TextBox4.TabIndex = 3
+        Me.StudentAnswerTextBox.Location = New System.Drawing.Point(6, 128)
+        Me.StudentAnswerTextBox.Name = "StudentAnswerTextBox"
+        Me.StudentAnswerTextBox.Size = New System.Drawing.Size(150, 20)
+        Me.StudentAnswerTextBox.TabIndex = 3
         '
         'AgeTextBox
         '
@@ -98,12 +84,12 @@ Partial Class ContestForm
         '
         'MathProblemGroupBox
         '
+        Me.MathProblemGroupBox.Controls.Add(Me.Number2Label)
+        Me.MathProblemGroupBox.Controls.Add(Me.Number1Label)
         Me.MathProblemGroupBox.Controls.Add(Me.StudentAnswerLabel)
         Me.MathProblemGroupBox.Controls.Add(Me.SecondNumberLabel)
         Me.MathProblemGroupBox.Controls.Add(Me.FisrtNumberLabel)
-        Me.MathProblemGroupBox.Controls.Add(Me.TextBox3)
-        Me.MathProblemGroupBox.Controls.Add(Me.TextBox2)
-        Me.MathProblemGroupBox.Controls.Add(Me.TextBox4)
+        Me.MathProblemGroupBox.Controls.Add(Me.StudentAnswerTextBox)
         Me.MathProblemGroupBox.Location = New System.Drawing.Point(54, 153)
         Me.MathProblemGroupBox.Name = "MathProblemGroupBox"
         Me.MathProblemGroupBox.Size = New System.Drawing.Size(164, 198)
@@ -286,6 +272,22 @@ Partial Class ContestForm
         Me.SubmitButton.Text = "Submit "
         Me.SubmitButton.UseVisualStyleBackColor = True
         '
+        'Number1Label
+        '
+        Me.Number1Label.AutoSize = True
+        Me.Number1Label.Location = New System.Drawing.Point(6, 38)
+        Me.Number1Label.Name = "Number1Label"
+        Me.Number1Label.Size = New System.Drawing.Size(0, 13)
+        Me.Number1Label.TabIndex = 10
+        '
+        'Number2Label
+        '
+        Me.Number2Label.AutoSize = True
+        Me.Number2Label.Location = New System.Drawing.Point(6, 84)
+        Me.Number2Label.Name = "Number2Label"
+        Me.Number2Label.Size = New System.Drawing.Size(0, 13)
+        Me.Number2Label.TabIndex = 14
+        '
         'ContestForm
         '
         Me.AcceptButton = Me.SubmitButton
@@ -311,9 +313,7 @@ Partial Class ContestForm
     End Sub
 
     Friend WithEvents NameTextBox As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents StudentAnswerTextBox As TextBox
     Friend WithEvents AgeTextBox As TextBox
     Friend WithEvents GradeTextBox As TextBox
     Friend WithEvents MathProblemGroupBox As GroupBox
@@ -334,4 +334,6 @@ Partial Class ContestForm
     Friend WithEvents SummeryButton As Button
     Friend WithEvents ClearButton As Button
     Friend WithEvents SubmitButton As Button
+    Friend WithEvents Number2Label As Label
+    Friend WithEvents Number1Label As Label
 End Class
